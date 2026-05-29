@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentic Verify</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    text-align:center;
+    padding:30px 20px 50px;
+}
+
+.logo{
+    width:130px;
+    margin-top:20px;
+}
+
+.title{
+    font-size:60px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-top:20px;
+}
+
+.subtitle{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+    letter-spacing:2px;
+}
+
+.cap-img{
+    width:100%;
+    max-width:320px;
+    margin-top:70px;
+    filter:drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+.scan-text{
+    margin-top:90px;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.scans{
+    font-size:65px;
+    font-weight:900;
+    margin-top:10px;
+}
+
+.verify-btn{
+    width:100%;
+    background:black;
+    color:white;
+    border:none;
+    border-radius:25px;
+    padding:28px;
+    margin-top:50px;
+    font-size:55px;
+    font-weight:900;
+    cursor:pointer;
+    transition:0.3s;
+    letter-spacing:3px;
+}
+
+.verify-btn:hover{
+    transform:scale(1.03);
+}
+
+.nfc{
+    font-size:45px;
+    margin-left:10px;
+}
+
+.status{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    color:green;
+    display:none;
+    animation:fade 0.5s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <img class="logo"
+    src="logo.png">
+
+    <!-- TITULO -->
+    <div class="title">AUTHENTIC</div>
+
+    <!-- SUBTITULO -->
+    <div class="subtitle">CHARGER | FES</div>
+
+    <!-- IMAGEN -->
+    <img class="cap-img"
+    src="gorra.png">
+
+    <!-- CONTADOR -->
+    <div class="scan-text">
+        TOTAL SCAN COUNT :
+    </div>
+
+    <div class="scans" id="scanCount">
+        1 SCANS
+    </div>
+
+    <!-- BOTON -->
+    <button class="verify-btn" onclick="verifyItem()">
+        VERIFY <span class="nfc">)))</span>
+    </button>
+
+    <div class="status" id="status">
+        ✔ PRODUCT VERIFIED
+    </div>
+
+</div>
+
+<script>
+
+let scans = 1;
+
+function verifyItem(){
+
+    scans++;
+
+    document.getElementById("scanCount").innerHTML =
+        scans + " SCANS";
+
+    document.getElementById("status").style.display =
+        "block";
+
+    navigator.vibrate?.(200);
+
+    setTimeout(()=>{
+        document.getElementById("status").style.display =
+        "none";
+    },2000);
+
+}
+
+</script>
+
+</body>
+</html>
